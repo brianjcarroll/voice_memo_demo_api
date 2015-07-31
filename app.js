@@ -6,7 +6,7 @@ var morgan = require('morgan');
 var apiRouter = require('./routes/api');
 var mongoose = require('mongoose');
 
-// put DB string here
+
 
 // morgan logs all requests to the server console
 app.use(morgan('combined'));
