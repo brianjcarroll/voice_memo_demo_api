@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 
 var TrackSchema = new Schema({
     "title": String,
-    "createdOn": Date
+    "createdOn": Date,
     "services": [{ 
       "name": String, 
       "status": String, 
