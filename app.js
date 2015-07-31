@@ -6,7 +6,7 @@ var morgan = require('morgan');
 var apiRouter = require('./routes/api');
 var mongoose = require('mongoose');
 
-mongoose.connect('mongodb://admin:password@apollo.modulusmongo.net:27017/q5etIdyg');
+
 
 // morgan logs all requests to the server console
 app.use(morgan('combined'));
