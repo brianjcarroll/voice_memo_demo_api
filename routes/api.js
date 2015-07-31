@@ -80,7 +80,7 @@ router.route('/tracks/:track_id').get(function(req, res){
 
   }).delete(function(req, res){
     Track.remove({
-      _id: req.params.bear_id
+      _id: req.params.track_id
     }, function(err, track){
       if(err){
         res.send(err);
