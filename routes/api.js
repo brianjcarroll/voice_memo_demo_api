@@ -14,11 +14,13 @@ router.use(function(req, res, next){
   next();
 });
 
-// show all tracks on a get to /api
+// just a friendly API message
 
 router.get('/', function(req, res){
   res.json({message: 'Welcome to the API, bro'});
 });
+
+// get and post behaviors to /tracks
 
 router.route('/tracks').post(function(req, res){
 
@@ -43,8 +45,10 @@ router.route('/tracks').post(function(req, res){
 
       res.json(tracks);
 
-    });t
+    });
   });
+
+// get, put, and delete behaviors for individual tracks.
 
 router.route('/tracks/:track_id').get(function(req, res){
     Track.findById(req.params.track_id, function(err, track){
@@ -55,6 +59,34 @@ router.route('/tracks/:track_id').get(function(req, res){
       res.json(track);
 
     });
-  });
+  }).put(function(req, res){
+    Track.findById(req.params.track_id, function(err, track){
+      if(err){
+        res.send(err);
+      }
+
+      track.title = req.body.title;
+
+      track.save(function(err){
+        if(err){
+          res.send(err);
+        }
+
+        res.json({message: "Track updated."});
+
+      })
+      
+    });
+
+  }).delete(function(req, res){
+    Track.remove({
+      _id: req.params.bear_id
+    }, function(err, track){
+      if(err){
+        res.send(err);
+      }
+      res.send({message: 'Track deleted'});
+    })
+  })
 
 module.exports = router;
